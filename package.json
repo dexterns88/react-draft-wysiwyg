@@ -1,13 +1,13 @@
 {
-  "name": "react-draft-wysiwyg",
-  "version": "1.13.2",
+  "name": "sp-react-draft-wysiwyg",
+  "version": "1.13.2.0",
   "description": "A wysiwyg on top of DraftJS.",
   "main": "dist/react-draft-wysiwyg.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpuri/react-draft-wysiwyg.git"
+    "url": "https://github.com/dexterns88/react-draft-wysiwyg"
   },
-  "author": "Jyoti Puri",
+  "author": "Jyoti Puri, dexterns88",
   "devDependencies": {
     "@storybook/react": "^3.2.17",
     "autoprefixer": "^8.0.0",

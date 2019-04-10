@@ -53,9 +53,14 @@ class Embedded extends Component {
   };
 
   addEmbeddedLink: Function = (embeddedLink, height, width): void => {
-    
-    const { editorState, onChange, config: { embedCallback} } = this.props;
-    const src = embedCallback ? embedCallback(embeddedLink) : embeddedLink;
+    let mutableEmbeddedLink = embeddedLink
+    if (embeddedLink.indexOf('youtube') >= 0) {
+      mutableEmbeddedLink = mutableEmbeddedLink.replace('watch?v=', 'embed/');
+      mutableEmbeddedLink = mutableEmbeddedLink.replace('/watch/', '/embed/');
+      mutableEmbeddedLink = mutableEmbeddedLink.replace('youtu.be/', 'youtube.com/embed/');
+    }
+    const { editorState, onChange, config: { embedCallback } } = this.props;
+    const src = embedCallback ? embedCallback(mutableEmbeddedLink) : mutableEmbeddedLink;
     const entityKey = editorState
       .getCurrentContent()
       .createEntity('EMBEDDED_LINK', 'MUTABLE', { src, height, width })
