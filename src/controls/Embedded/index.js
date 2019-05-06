@@ -58,6 +58,10 @@ class Embedded extends Component {
       mutableEmbeddedLink = mutableEmbeddedLink.replace('watch?v=', 'embed/');
       mutableEmbeddedLink = mutableEmbeddedLink.replace('/watch/', '/embed/');
       mutableEmbeddedLink = mutableEmbeddedLink.replace('youtu.be/', 'youtube.com/embed/');
+    } else if (embeddedLink.indexOf('youtu.be/') >= 0) {
+      let buildLink = mutableEmbeddedLink.replace('https://', '').replace('http://', '');
+      buildLink = buildLink.split('/');
+      mutableEmbeddedLink = `https://www.youtube.com/embed/${buildLink[1]}`;
     }
     const { editorState, onChange, config: { embedCallback } } = this.props;
     const src = embedCallback ? embedCallback(mutableEmbeddedLink) : mutableEmbeddedLink;
